@@ -18,7 +18,7 @@
     "height": null,
     "padding": {
       "top": 0,
-      "left": 0,
+      "left": 2,
       "right": 4
     },
     "printRemaining": true,
@@ -149,20 +149,12 @@
       "keyIcon": ""
     },
     {
-      "type": "uptime",
-      "keyIcon": ""
-    },
-    {
       "type": "packages",
       "keyIcon": "󰏖",
       "disabled": [
         "apk"
       ],
       "combined": false
-    },
-    {
-      "type": "shell",
-      "keyIcon": ""
     },
     {
       "type": "display",
@@ -172,30 +164,13 @@
       "order": null
     },
     {
-      "type": "de",
-      "keyIcon": "",
-      "slowVersionDetection": false
-    },
-    {
       "type": "wm",
       "keyIcon": "",
       "detectPlugin": false
     },
     {
-      "type": "icons",
-      "keyIcon": ""
-    },
-    {
       "type": "font",
       "keyIcon": ""
-    },
-    {
-      "type": "cursor",
-      "keyIcon": "󰆿"
-    },
-    {
-      "type": "terminal",
-      "keyIcon": ""
     },
     {
       "type": "cpu",
@@ -265,7 +240,7 @@
       "showMtu": false,
       "showSpeed": false,
       "showFlags": false,
-      "compact": false,
+      "compact": true,
       "defaultRouteOnly": true,
       "showAllIps": false,
       "namePrefix": ""
@@ -279,10 +254,6 @@
         "yellow": 20,
         "type": 0
       }
-    },
-    {
-      "type": "poweradapter",
-      "keyIcon": "󰚥"
     },
     "break",
     {

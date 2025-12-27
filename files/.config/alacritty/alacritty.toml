@@ -25,8 +25,8 @@ multiplier = 3
 draw_bold_text_with_bright_colors = true
 
 [colors.primary]
-background = "0x292929"
-foreground = "0xD8DEE9"
+background = "0x0f0f0f"
+foreground = "0xdbf9ff"
 
 [colors.normal]
 black = "0x3B4252"
@@ -52,19 +52,19 @@ white = "0xECEFF4"
 size = 11
 
 [font.normal]
-family = "IBM Plex Mono"
+family = "MesloLGM Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "IBM Plex Mono"
+family = "MesloLGM Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "IBM Plex Mono"
+family = "MesloLGM Nerd Font"
 style = "Italic"
 
 [font.bold_italic]
-family = "IBM Plex Mono"
+family = "MesloLGM Nerd Font"
 style = "Bold Italic"
 
 [selection]

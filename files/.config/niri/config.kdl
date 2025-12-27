@@ -7,7 +7,8 @@
 input {
     keyboard {
         xkb {
-            layout "no" // Use the German keyboard layout
+            // layout "no" Use the German keyboard layout
+			file "~/.config/keymap.xkb"
         }
         numlock // Enable numlock on startup
     }
@@ -15,6 +16,9 @@ input {
     touchpad {
         tap // Enable tap-to-click
         natural-scroll // Enable natural (macOS-style) scrolling
+		scroll-factor 0.2
+		accel-profile "adaptive"
+		accel-speed 0.1
     }
 
     focus-follows-mouse // Automatically focus windows under the mouse pointer
@@ -26,9 +30,17 @@ input {
 // You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
+output "DP-1" {
+    mode "1920x1200@59.950001"
+	//mode custom=true "1920x1200@75"
+	//modeline  245.25  1920 2056 2264 2608  1200 1203 1209 1255 "-hsync" "+vsync"
     scale 1 // No scaling (use 2 for HiDPI)
+	variable-refresh-rate
+}
+
+output "*" {
+	mode "1920x1080@60"
+	scale 1
 }
 
 // ────────────── Keybindings ──────────────
@@ -44,7 +56,7 @@ binds {
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: swaylock" { spawn-sh "swaylock"; }
     
     // Please choose your own file manager
-    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
+    MOD+E                             hotkey-overlay-title="File Manager: Cosmic Files" { spawn-sh "cosmic-files"; }
 
     // ─── Audio Controls ───
     // Example volume keys mappings for PipeWire & WirePlumber.
@@ -133,13 +145,13 @@ binds {
     MOD+TAB                             { focus-workspace-previous; }
 
     // ─── Layout Controls ───
-    MOD+F                               { expand-column-to-available-width; }
+    MOD+F                               { maximize-column; }
     MOD+C                               { center-column; }
     MOD+CTRL+C                          { center-visible-columns; }
     MOD+PERIOD                          { set-column-width "-10%"; }
     MOD+MINUS                           { set-column-width "+10%"; }
-    MOD+SHIFT+MINUS                     { set-window-height "-10%"; }
-    MOD+SHIFT+EQUAL                     { set-window-height "+10%"; }
+    MOD+SHIFT+PERIOD                     { set-window-height "-10%"; }
+    MOD+SHIFT+MINUS                     { set-window-height "+10%"; }
 
     // ─── Modes ───
     MOD+T                               { toggle-window-floating; }
@@ -165,14 +177,15 @@ binds {
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
     
-    spawn-sh-at-startup "nm_applet"
+    spawn-sh-at-startup "nm-applet --indicator"
+    spawn-sh-at-startup "blueman-applet"
     spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
     spawn-sh-at-startup "/home/misikovich/.config/userscripts/setwp.sh" // Set wallpaper
-    spawn-sh-at-startup "waybar" // Launch waybar
+    spawn-sh-at-startup "$HOME/.config/waybar/waybar.sh" // Launch waybar
 
     prefer-no-csd // Disable program decorations
-    screenshot-path null // Disable screenshot saving
+    // screenshot-path "~/Pictures/Screenshots" Disable screenshot saving
 
 // ────────────── Layout Settings ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
@@ -251,6 +264,11 @@ binds {
         clip-to-geometry true 
      }
 
+    window-rule {
+    	match app-id=r#"Alacritty$"#
+    	scroll-factor 4
+	}
+	
 // ────────────── Environment Variables ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#environment
 

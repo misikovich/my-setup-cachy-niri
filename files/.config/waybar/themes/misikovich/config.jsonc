@@ -1,0 +1,138 @@
+{
+    "position": "top",
+    "height": 24,
+    "spacing": 4,
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "mpris",
+        "idle_inhibitor",
+        "network",
+        "power-profiles-daemon",
+        "backlight",
+        "wireplumber",
+        "bluetooth",
+        "battery",
+        "tray"
+    ],
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "chat": "\udb82\udf79",
+            "browser": "\udb81\udd9f",
+            "terminal": "\ue795"
+        }
+    },
+    "niri/window": {
+        "format": "{title}",
+        "rewrite": {}
+    },
+    "mpris": {
+        "format": "\uf144 {status}",
+        "tooltip-format": "{player}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "network": {
+        "format-wifi": "{essid} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-scroll-down": "brightnessctl s 2%-",
+        "on-scroll-up": "brightnessctl s 2%+"
+    },
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "Muted  ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "min-length": 10,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"
+    },
+    "bluetooth": {
+        "format-on": "\udb80\udcaf",
+        "format-off": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1 {device_alias}",
+        "on-click": "overskride",
+        "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q \"Powered: yes\" && echo off || echo on)",
+        "min-length": 8
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "min-length": 10
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}
