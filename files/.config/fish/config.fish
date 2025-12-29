@@ -28,9 +28,15 @@ function gitpush --description "pushes git repo to remote"
 	git push
 end
 
+function scr --description "opens scrcpy to remote adb device"
+	set ipaddr $argv[1]
+	adb connect $ipaddr
+	scrcpy -d --max-fps 60 -m 1280 -b 9M --video-buffer=80
+end
+
 alias conf-niri="nano ~/.config/niri/config.kdl"
 alias conf-fish="nano ~/.config/fish/config.fish"
-alias conf-ala="nano ~/.config/alacritty/alacritty.toml"
+alias conf-kitty="nano ~/.config/kitty/kitty.conf"
 alias conf-ff="nano ~/.config/fastfetch/fastfetch.jsonc"
 alias conf-nano="nano ~/.nanorc"
 alias conf-limine="sudo nano /boot/limine.conf"
